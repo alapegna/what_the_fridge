@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Search</title>
+    <link rel="icon" href="http://www.appsgeyser.com/assets/15f047a8/icons/recipe-icon-6.png">
+    <meta name="description" content="Free Bootstrap 4 Theme by uicookies.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.5/css/select.dataTables.min.css">
+
+    <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons/css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    
+    <link rel="stylesheet" href="assets/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="assets/css/select2.css">
+    
+
+    <link rel="stylesheet" href="assets/css/helpers.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+  </head>
+  <body data-spy="scroll" data-target="#probootstrap-navbar" data-offset="200" onload="javascript:displaySearch()">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+
+      body, html {
+          height: 100%;
+      }
+
+      .bg {
+          /* The image used */
+          background-image: url("assets/images/recipe.jpg");
+          /* Full height */
+          height: 100%;
+          /* Center and scale the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+
+      .btn {
+          margin-bottom: 5px;
+      }
+
+      .grid {
+          position: relative;
+          width: 100%;
+          background: #fff;
+          color: #666666;
+          border-radius: 2px;
+          margin-bottom: 25px;
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+      }
+
+          .grid .grid-body {
+              padding: 15px 20px 15px 20px;
+              font-size: 0.9em;
+              line-height: 1.9em;
+          }
+
+      .search table tr td.rate {
+          color: #f39c12;
+          line-height: 50px;
+      }
+
+      .search table tr:hover {
+          cursor: pointer;
+      }
+
+      .search table tr td.image {
+          width: 50px;
+      }
+
+      .search table tr td img {
+          width: 50px;
+          height: 50px;
+      }
+
+      .search table tr td.rate {
+          color: #f39c12;
+          line-height: 50px;
+      }
+
+      .search table tr td.price {
+          font-size: 1.5em;
+          line-height: 50px;
+      }
+
+      .search #price1,
+      .search #price2 {
+          display: inline;
+          font-weight: 600;
+      }
+
+      /* The Modal (background) */
+      .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 2; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+
+      /* Modal Content */
+      .modal-content {
+          /*background-color: #fefefe;*/
+          background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReruLob2PsJwAuHCzSBYMZGI9nC-mDmH3CI7HKe2LN-xxkCgex");
+          color: #000000;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+      }
+
+      .rN {
+        font-family: "Palantino";
+        font-size: 27px;
+        font-style: bold;
+        padding-bottom: 20px;
+      }
+
+      .rI {
+        float: left;
+        padding-right: 60px;
+      }
+
+      .rS {
+        float: right;
+      }
+
+      /* The Close Button */
+      .close {
+          color: #000000;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+          text-align: left;
+          padding-bottom: 15px;
+      }
+
+          .close:hover,
+          .close:focus {
+              color: #000;
+              text-decoration: none;
+              cursor: pointer;
+          }
+  </style>
+    </style>
+
+    <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar" id="probootstrap-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Recipe Search Results</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span><i class="ion-navicon"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="probootstrap-menu">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="myFridge.html">MyFridge</a></li>
+            <li class="nav-item active"><a class="nav-link" href="search.html">Search</a></li>
+            <li class="nav-item"><a class="nav-link" onclick="doLogout()" href="login.html">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+    
+
+    <section class="probootstrap-cover overflow-hidden relative"  style="background-image: url('assets/images/recipe.jpg');"  id="section-home">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row align-items-center"> 
+          <div class="col-md-12">
+    <div class="grid search">
+      <div class="grid-body">
+        <div class="row">
+          <!-- BEGIN FILTERS -->
+            <div class="col-md-3">
+                <h2 class="grid-title"><i class="fa fa-filter"></i> Filters</h2>
+                <hr>
+
+                <!-- BEGIN FILTER BY CATEGORY -->
+                <h4>Filter By Cuisine:</h4>
+                <div class="checkbox">
+                    <label><input name="filter" type="radio" class="icheck" value="" onClick="filterSearch()" checked> Show All</label>
+                </div>
+                <div class="checkbox">
+                    <label><input name="filter" type="radio" class="icheck" value="American" onClick="filterSearch()"> American</label>
+                </div>
+                <div class="checkbox">
+                    <label><input name="filter" type="radio" class="icheck" value="Greek" onClick="filterSearch()"> Greek</label>
+                </div>
+                <div class="checkbox">
+                    <label><input name="filter" type="radio" class="icheck" value="Italian" onClick="filterSearch()"> Italian</label>
+                </div>
+                <div class="checkbox">
+                    <label><input name="filter" type="radio" class="icheck" value="Mediterranean" onClick="filterSearch()"> Mediterranean</label>
+                </div>
+                <div class="checkbox">
+                    <label><input name="filter" type="radio" class="icheck" value="Mexican" onClick="filterSearch()"> Mexican</label>
+                </div>
+                <div class="checkbox">
+                    <label><input name="filter" type="radio" class="icheck" value="Thai" onClick="filterSearch()"> Thai</label>
+                </div>
+                <div class="checkbox">
+                    <label><input name="filter" type="radio" class="icheck" value="Thai" onClick="filterSearch()"> Vegan</label>
+                </div>
+                <!-- END FILTER BY CATEGORY -->
+
+                <div class="padding"></div>
+
+                <div class="padding"></div>
+
+                <!-- BEGIN FILTER BY PRICE
+    <h4>By Prep Time:</h4>
+    Between <div id="price1">25</div> and <div id="price2">30</div>
+    <div class="slider-primary">
+        <div class="slider slider-horizontal" style="width: 152px;"><div class="slider-track"><div class="slider-selection" style="left: 30%; width: 50%;"></div><div class="slider-handle round" style="left: 30%;"></div><div class="slider-handle round" style="left: 80%;"></div></div><div class="tooltip top hide" style="top: -30px; left: 50.1px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">300 : 800</div></div><input type="text" class="slider" value="" data-slider-min="0" data-slider-max="1000" data-slider-step="1" data-slider-value="[300,800]" data-slider-tooltip="hide"></div>
+    </div>
+    END FILTER BY PRICE -->
+            </div>
+          <!-- END FILTERS -->
+          <!-- BEGIN RESULT -->
+          <div class="col-md-9">
+            <h2><i class="fa fa-file-o"></i> Result</h2>
+            <hr>
+            <!-- BEGIN SEARCH INPUT -->
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="Search" id="searchBar" onchange="barSearch()">
+                <!--<button class="btn btn-primary" type="button" onclick="barSearch()"><i class="fa fa-search"></i></button>-->
+            </div>
+            <!-- END SEARCH INPUT -->
+            <!--<p>Showing all results matching "web development"</p>-->
+            
+            <div class="padding"></div>
+            
+            <div class="row">
+              <!-- BEGIN ORDER RESULT -->
+                <div class="col-sm-6">
+                    <!--
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        Order by
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Name</a></li>
+        <li><a href="#">Cuisine</a></li>
+        <li><a href="#">Rating</a></li>
+      </ul>
+    </div>-->
+                </div>
+              <!-- END ORDER RESULT -->
+            </div>
+            
+              <!-- Content for Recipe Modal -->
+            <div id="recipeModal" class="modal">
+
+                <div class="modal-content">
+                  <div id="parent">
+                    <span class="close">&times;</span>
+                    <div class="rN" id="recipeName"></div>
+                    <div class="rI" id="recipeImage"></div>
+                    <div class="rIn" id="recipeIngredients"></div>
+                    <div class="rC" id="recipeCuisine"></div>
+                    <div class="rR" id="recipeRating"></div>
+                    <div class="rS" id="recipeSteps"></div>
+                  </div>
+                </div>
+
+            </div>
+
+            <!-- BEGIN TABLE RESULT -->
+            <div style="text-align: center; font-size:150%">
+                <span id="openRecipeAlert"></span>
+            </div>
+
+
+            <div class="table-responsive">
+              <table id ="searchTable" class="table table-hover" href="www.google.com">
+                  <tbody>
+                  </tbody></table>
+    </div>
+    <!-- END TABLE RESULT -->
+
+
+</div>
+          <!-- END RESULT -->
+        </div>
+      </div>
+    </div>
+  </div>
+            </div>
+          </div>
+
+    
+    </section>
+    <!-- END section -->
+    
+    <script src="assets/js/jquery.min.js"></script>
+
+    <script src="JS_CODE/fridge.js"></script>
+    
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    
+    <script src="assets/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+
+    <script src="assets/js/select2.min.js"></script>
+
+    <script src="assets/js/main.js"></script>
+
+  </body>
+</html>

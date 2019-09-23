@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>MyFridge</title>
+    <link rel="icon" href="http://www.appsgeyser.com/assets/15f047a8/icons/recipe-icon-6.png">
+    <meta name="description" content="Free Bootstrap 4 Theme by uicookies.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.5/css/select.dataTables.min.css">
+
+    <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons/css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    
+    <link rel="stylesheet" href="assets/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="assets/css/select2.css">
+    
+
+    <link rel="stylesheet" href="assets/css/helpers.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+  </head>
+  <body data-spy="scroll" data-target="#probootstrap-navbar" data-offset="200" >
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+  <style>
+
+  </style>
+
+    <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar" id="probootstrap-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">MyFridge</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span><i class="ion-navicon"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="probootstrap-menu">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item active"><a class="nav-link" href="myFridge.html">MyFridge</a></li>
+            <li class="nav-item"><a class="nav-link" href="search.html">Search</a></li>
+            <li class="nav-item"><a class="nav-link" onclick="doLogout()" href="login.html">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+    
+
+    <section class="probootstrap-cover overflow-hidden relative" style="background-image: url('assets/images/recipe.jpg');" id="section-home">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md probootstrap-animate" style="background-color:white; padding-bottom:10px; padding-top:20px">
+                    <!-- <form action="#" class="probootstrap-form">-->
+                    <div class="form-group">
+                        <div class="row mb-3">
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label for="ingredientTypes">Type</label>
+                                    <label for="ingredientTypes" style="width: 100%;">
+                                        <select class="js-example-basic-single js-states form-control" id="ingredientTypes" onchange="searchIngredient(value);" style="width: 100%;"></select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label for="ingredients">Ingredient</label>
+                                    <label for="ingredients" style="width: 100%;">
+                                        <select class="js-example-basic-single js-states form-control" id="ingredients" style="width: 100%;"></select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-group">
+                                    <label for="quantityList">Quantity</label>
+                                    <div class="probootstrap_select-wrap">
+                                        <label for="quantityList" style="width: 100%;">
+                                            <select class="js-example-basic-single js-states form-control" id="quantityList" style="width: 100%;"></select>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md">
+                                <input type="submit" value="Add Ingredient" class="btn btn-primary btn-block" onclick="addIngredient()">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 align="center"><b>Ingredient List</b></h4>
+                                <div class="table-responsive">
+                                    <table id="mytable" class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Ingredient</th>
+                                                <th>Quantity</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tr>
+                                            <!--<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>-->
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- </form>-->
+                    <div style="text-align: center; font-size:150%; color: white">
+                        <span id="openFridgeAlert"></span>
+                    </div>
+                    <div style="text-align: center; font-size:150%">
+                        <span id="submitFridgeAlert"></span>
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit Fridge" class="btn btn-info btn-block" onclick="updateFridge()">
+                        <input type="submit" value="Search Recipes" class="btn btn-info btn-block" href="search.html" onclick="searchRecipe();">
+                    </div>
+                    <div style="text-align: center; font-size:150%">
+                        <span id="searchRecipeAlert"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--</div>-->
+
+    </section>
+    <!-- END section -->
+    
+    <script src="assets/js/jquery.min.js"></script>
+
+    <script src="JS_CODE/fridge.js"></script>
+    
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    
+    <script src="assets/js/bootstrap-datepicker.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+
+    <script src="assets/js/select2.min.js"></script>
+
+    <script src="assets/js/main.js"></script>
+
+  </body>
+</html>
